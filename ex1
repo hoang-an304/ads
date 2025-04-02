@@ -1,1 +1,38 @@
-variant of bubble sort, comparing all odd/even indexed pairs of adjacent elements in the list, if a pair is in the wrong order. the elements are switched
+#include <stdio.h>
+
+void odd_even_bubble_sort(int arr[], int n) {
+    int sorted = 0;
+    while (!sorted) {
+        sorted = 1;
+        for (int i = 1; i < n - 1; i += 2) {
+            if (arr[i] > arr[i + 1]) {
+                int temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+                sorted = 0;
+            }
+        }
+        for (int i = 0; i < n - 1; i += 2) {
+            if (arr[i] > arr[i + 1]) {
+                int temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+                sorted = 0;
+            }
+        }
+    }
+}
+
+int main() {
+    int arr[] = {5, 3, 8, 4, 2, 7, 1, 6};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    
+    odd_even_bubble_sort(arr, n);
+    
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    
+    return 0;
+}
